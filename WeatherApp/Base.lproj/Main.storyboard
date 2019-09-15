@@ -92,6 +92,14 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RP4-RE-DSx">
+                                <rect key="frame" x="-1" y="490" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="hKL-i6-mCI" id="YCI-Ph-gmu"/>
+                                    <outlet property="delegate" destination="hKL-i6-mCI" id="vrF-qS-cua"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="9VH-KE-CLc"/>
@@ -102,6 +110,7 @@
                         <outlet property="icon" destination="mkx-0g-b8X" id="LAx-na-6jE"/>
                         <outlet property="max" destination="4bV-bd-Xyj" id="8mw-pe-9pQ"/>
                         <outlet property="min" destination="tOc-ij-pzq" id="bIh-LT-KjA"/>
+                        <outlet property="picker" destination="RP4-RE-DSx" id="Rhd-DD-mLJ"/>
                         <outlet property="pressure" destination="IAW-iC-vuR" id="qcW-ry-1Rc"/>
                         <outlet property="temp" destination="nBb-iW-in7" id="ewH-q7-mVj"/>
                         <outlet property="windDir" destination="vd0-3r-P3O" id="bpn-gC-dbG"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var min: UILabel!
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windDir: UILabel!
     @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
     
     var current = 0
     var hourlyForecast = [Hourly]()
@@ -28,7 +29,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("App Started")
+        
+        self.picker.delegate = self
+        self.picker.dataSource = self
+
         updateLocation(location: "37.8267,-122.4233")
+    }
+    
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.hourlyForecast.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+
+        let hour = Calendar.current.component(.hour, from: Date(timeIntervalSinceReferenceDate: self.hourlyForecast[row].time))
+
+        print("\(hour)")
+        print("\(hour)H")
+
+        return NSAttributedString(string: "\(hour)H", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func updateLocation(location: String) {
