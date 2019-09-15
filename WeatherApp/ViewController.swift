@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var windSpeed: UILabel!
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windDir: UILabel!
+    @IBOutlet weak var humidity: UILabel!
     
     var current = 0
     var hourlyForecast = [Hourly]()
@@ -69,6 +70,7 @@ class ViewController: UIViewController {
         windSpeed.text = "\(Int(self.hourlyForecast[self.current].windSpeed))km/h"
         windDir.text = "Vent \(bearingToDistance(bearing: Int(self.hourlyForecast[self.current].pressure)))"
         pressure.text = "\(Int(self.hourlyForecast[self.current].pressure))hPa"
+        humidity.text = "\(Int(self.hourlyForecast[self.current].humidity * 100))%"
     }
 }
 
