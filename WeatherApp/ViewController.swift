@@ -29,9 +29,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("App Started")
-        
-        self.picker.delegate = self
-        self.picker.dataSource = self
 
         updateLocation(location: "37.8267,-122.4233")
     }
@@ -55,12 +52,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
         return NSAttributedString(string: "\(hour)H", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
+//
+//    func pickerView(_ pickerView: UIPickerView, p row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        return view
+//    }
+//
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.current = row
+        print("OK?")
+        self.updateFields()
+    }
     
     func updateLocation(location: String) {
         API.forecast(withLocation: "37.8267,-122.4233") { (hourly: [Hourly], daily: [Daily]) in
             self.hourlyForecast = hourly
             self.dailyForecast = daily
             DispatchQueue.main.async {
+                self.picker.delegate = self
+                self.picker.dataSource = self
                 self.updateFields()
             }
         }
