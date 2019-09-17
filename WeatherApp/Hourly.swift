@@ -2,8 +2,8 @@
 //  Weather.swift
 //  WeatherApp
 //
-//  Created by Gabriel on 14/09/2019.
-//  Copyright © 2019 Gabriel. All rights reserved.
+//  Created by Cabanes on 14/09/2019.
+//  Copyright © 2019 Cabanes. All rights reserved.
 //
 
 import Foundation

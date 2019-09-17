@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  WeatherApp
 //
-//  Created by Gabriel on 14/09/2019.
-//  Copyright © 2019 Gabriel. All rights reserved.
+//  Created by Cabanes on 14/09/2019.
+//  Copyright © 2019 Cabanes. All rights reserved.
 //
 
 import UIKit
@@ -20,10 +20,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var windDir: UILabel!
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var picker: UIPickerView!
-    
+    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var rightSideMenu: UIView!
+    @IBOutlet weak var rightSideTrailingAnchor: NSLayoutConstraint!
+    @IBOutlet weak var leftSideMenu: UIView!
+    @IBOutlet weak var leftSideLeadingAnchor: NSLayoutConstraint!
+
     var current = 0
     var hourlyForecast = [Hourly]()
     var dailyForecast = [Daily]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,28 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         print("App Started")
 
         updateLocation(location: "37.8267,-122.4233")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(tapGestureAction))
+        rightSideMenu.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapGestureAction(){
+        leftSideLeadingAnchor.constant = -232
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        DispatchQueue.main.async {
+            self.rightSideTrailingAnchor.constant = -182
+        }
+    }
+    
+    @IBAction func menuAction(_ sender: Any) {
+        leftSideLeadingAnchor.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { (_) in
+            self.rightSideTrailingAnchor.constant = 0
+        }
     }
     
     // Number of columns of data
