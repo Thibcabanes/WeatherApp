@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B02DA4C23314D1C003C942C /* weathersaved.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B02DA4B23314D1C003C942C /* weathersaved.storyboard */; };
 		1B650F6B232E676300E345BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FDF234232DDA7500EDF3A0 /* Assets.xcassets */; };
 		1B650F6C232E676A00E345BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FDF21F232D83D200EDF3A0 /* LaunchScreen.storyboard */; };
 		1B650F6D232E676E00E345BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FDF21A232D83CE00EDF3A0 /* Main.storyboard */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B02DA4B23314D1C003C942C /* weathersaved.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = weathersaved.storyboard; path = ../weathersaved.storyboard; sourceTree = "<group>"; };
 		C0FDF213232D83CE00EDF3A0 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FDF216232D83CE00EDF3A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FDF21B232D83CE00EDF3A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +44,6 @@
 		C0FDF20A232D83CE00EDF3A0 = {
 			isa = PBXGroup;
 			children = (
-				1B02DA4B23314D1C003C942C /* weathersaved.storyboard */,
 				C0FDF215232D83CE00EDF3A0 /* WeatherApp */,
 				C0FDF214232D83CE00EDF3A0 /* Products */,
 			);
@@ -135,7 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B650F6D232E676E00E345BD /* Main.storyboard in Resources */,
-				1B02DA4C23314D1C003C942C /* weathersaved.storyboard in Resources */,
 				1B650F6C232E676A00E345BD /* LaunchScreen.storyboard in Resources */,
 				1B650F6B232E676300E345BD /* Assets.xcassets in Resources */,
 			);
