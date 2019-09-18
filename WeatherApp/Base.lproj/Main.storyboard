@@ -47,7 +47,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="town" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-KJ-ZAS">
-                                        <rect key="frame" x="184" y="234" width="47.499999999999979" height="39"/>
+                                        <rect key="frame" x="137" y="234" width="141" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,14 +121,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTr-za-eoe">
                                         <rect key="frame" x="-232" y="0.0" width="232" height="896"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f90-mv-49h">
-                                                <rect key="frame" x="68" y="52" width="67" height="41"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f90-mv-49h">
+                                                <rect key="frame" x="0.0" y="52" width="195" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOS-Wj-xX3">
+                                            <searchBar contentMode="redraw" fixedFrame="YES" text="New York" translatesAutoresizingMaskIntoConstraints="NO" id="fOS-Wj-xX3">
                                                 <rect key="frame" x="0.0" y="93" width="232" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -181,6 +181,7 @@
                         <outlet property="pressure" destination="IAW-iC-vuR" id="qcW-ry-1Rc"/>
                         <outlet property="rightSideMenu" destination="byq-vq-x9C" id="MWD-oR-CSx"/>
                         <outlet property="rightSideTrailingAnchor" destination="tab-eP-1no" id="bz0-4W-65U"/>
+                        <outlet property="searchBar" destination="fOS-Wj-xX3" id="XOo-ow-At4"/>
                         <outlet property="temp" destination="nBb-iW-in7" id="ewH-q7-mVj"/>
                         <outlet property="windDir" destination="vd0-3r-P3O" id="bpn-gC-dbG"/>
                         <outlet property="windSpeed" destination="Q6a-Hz-R03" id="s4H-fu-p95"/>

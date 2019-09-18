@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var min: UILabel!
@@ -25,21 +26,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var rightSideTrailingAnchor: NSLayoutConstraint!
     @IBOutlet weak var leftSideMenu: UIView!
     @IBOutlet weak var leftSideLeadingAnchor: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
 
     var current = 0
     var hourlyForecast = [Hourly]()
     var dailyForecast = [Daily]()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print("App Started")
 
-        updateLocation(location: "37.8267,-122.4233")
+        searchBar.delegate = self
+        updateLocation(location: "New York")
         
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(tapGestureAction))
         rightSideMenu.addGestureRecognizer(tapGesture)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        if let locationString = searchBar.text, !locationString.isEmpty{
+            updateLocation(location: locationString)
+        }
     }
     
     @objc func tapGestureAction(){
@@ -92,13 +101,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func updateLocation(location: String) {
-        API.forecast(withLocation: "37.8267,-122.4233") { (hourly: [Hourly], daily: [Daily]) in
-            self.hourlyForecast = hourly
-            self.dailyForecast = daily
-            DispatchQueue.main.async {
-                self.picker.delegate = self
-                self.picker.dataSource = self
-                self.updateFields()
+        CLGeocoder().geocodeAddressString(location) { (placemarks:[CLPlacemark]?, error:Error?) in
+            if error == nil {
+                if let location = placemarks?.first?.location {
+                    API.forecast(withLocation: location.coordinate, completion: { (hourly: [Hourly], daily: [Daily]) in
+                        self.hourlyForecast = hourly
+                        self.dailyForecast = daily
+                        DispatchQueue.main.async {
+                            self.picker.delegate = self
+                            self.picker.dataSource = self
+                            self.updateFields()
+                        }
+                    })
+                }
             }
         }
     }
@@ -125,14 +140,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     func updateFields() {
-        min.text = "❄️ \(Int(self.dailyForecast[0].temperatureLow)) °F"
-        max.text = "🔥 \(Int(self.dailyForecast[0].temperatureHigh)) °F"
-        icon.image = UIImage(named: self.hourlyForecast[self.current].icon)
-        temp.text = "\(Int(self.hourlyForecast[self.current].temperature)) °F"
+        city.text      = searchBar.text
+        min.text       = "❄️ \(Int(self.dailyForecast[0].temperatureLow)) °F"
+        max.text       = "🔥 \(Int(self.dailyForecast[0].temperatureHigh)) °F"
+        icon.image     = UIImage(named: self.hourlyForecast[self.current].icon)
+        temp.text      = "\(Int(self.hourlyForecast[self.current].temperature)) °F"
         windSpeed.text = "\(Int(self.hourlyForecast[self.current].windSpeed))km/h"
-        windDir.text = "Vent \(bearingToDistance(bearing: Int(self.hourlyForecast[self.current].pressure)))"
-        pressure.text = "\(Int(self.hourlyForecast[self.current].pressure))hPa"
-        humidity.text = "\(Int(self.hourlyForecast[self.current].humidity * 100))%"
+        windDir.text   = "Vent \(bearingToDistance(bearing: Int(self.hourlyForecast[self.current].pressure)))"
+        pressure.text  = "\(Int(self.hourlyForecast[self.current].pressure))hPa"
+        humidity.text  = "\(Int(self.hourlyForecast[self.current].humidity * 100))%"
     }
 }
 

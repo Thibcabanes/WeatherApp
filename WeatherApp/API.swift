@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct API {
     static let basePath = "https://api.darksky.net/forecast/0a92bb57b798e6b1f5cf84b93902de62/"
 
-    static func forecast (withLocation location: String, completion: @escaping ([Hourly], [Daily]) -> ()) {
-        let url = basePath + location
+    static func forecast (withLocation location: CLLocationCoordinate2D, completion: @escaping ([Hourly], [Daily]) -> ()) {
+        let url = basePath + "\(location.latitude),\(location.longitude)"
         let request = URLRequest(url: URL(string: url)!)
 
         let call = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
